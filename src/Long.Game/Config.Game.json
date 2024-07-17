@@ -1,0 +1,45 @@
+{
+  "CooperatorMode": false,
+  "Database": {
+    "Hostname": "localhost",
+    "Username": "root",
+    "Password": "",
+    "Schema": "my",
+    "Port": 3306
+  },
+  "Ai": {
+    "Id": "df1b3401-6bbc-41fc-9160-9dbf609426b5",
+    "Name": "Comet",
+    "IPAddress": "0.0.0.0",
+    "Port": 9875,
+    "Username": "yD3Ni6tMW1NNU1QH",
+    "Password": "jETqqIKi9LuFvOgu"
+  },
+  "Game": {
+    "Id": "df1b3401-6bbc-41fc-9160-9dbf609426b5",
+    "Name": "Comet",
+    "IPAddress": "0.0.0.0",
+    "Port": 5816,
+    "MaxOnlinePlayers": 1500,
+    "Username": "yD3Ni6tMW1NNU1QH",
+    "Password": "jETqqIKi9LuFvOgu",
+    "ReleaseDate": null,
+    "Processors": 6,
+    "Listener": {
+      "RecvProcessors": 4,
+      "SendProcessors": 2
+    }
+  },
+  "Login": {
+    "IPAddress": "127.0.0.1",
+    "Port": 9865,
+    "Encryption": {
+      "Key": "M6gkSkSNXMZeyIwNc7YBUj42wuyh686pYmAK5Vg9L30=",
+      "EncryptIV": "dGZIN8XB4o4QgNJ5YXc1Sw==",
+      "DecryptIV": "K7wCbVKECO1noApl1laftA=="
+    }
+  },
+  "Modules": [
+    "Relation",
+  ]
+}

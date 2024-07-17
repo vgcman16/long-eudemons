@@ -1,0 +1,101 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<OutputPath>../Bin</OutputPath>
+		<Version>1.0.1</Version>
+		<Configurations>Debug;Release;Debug(Paladin)</Configurations>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug(Paladin)|AnyCPU'">
+		<DefineConstants>$(DefineConstants);DEBUG_PALADIN;DEBUG</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Modules\Systems\AntiCheat\**" />
+	  <Compile Remove="Modules\Systems\DetainEquip\**" />
+	  <Compile Remove="Modules\Systems\ElitePKArenic\**" />
+	  <Compile Remove="Modules\Systems\Lottery\**" />
+	  <Compile Remove="Modules\Systems\PopPkArenic\**" />
+	  <Compile Remove="Modules\Systems\Storage\**" />
+	  <Compile Remove="Modules\Systems\TeamArenic\**" />
+	  <Compile Remove="Modules\Systems\Title\**" />
+	  <Compile Remove="Modules\Systems\Training\**" />
+	  <Compile Remove="Network\Login\**" />
+	  <Compile Remove="States\Eudemons\**" />
+	  <Compile Remove="Threading\**" />
+	  <EmbeddedResource Remove="Modules\Systems\AntiCheat\**" />
+	  <EmbeddedResource Remove="Modules\Systems\DetainEquip\**" />
+	  <EmbeddedResource Remove="Modules\Systems\ElitePKArenic\**" />
+	  <EmbeddedResource Remove="Modules\Systems\Lottery\**" />
+	  <EmbeddedResource Remove="Modules\Systems\PopPkArenic\**" />
+	  <EmbeddedResource Remove="Modules\Systems\Storage\**" />
+	  <EmbeddedResource Remove="Modules\Systems\TeamArenic\**" />
+	  <EmbeddedResource Remove="Modules\Systems\Title\**" />
+	  <EmbeddedResource Remove="Modules\Systems\Training\**" />
+	  <EmbeddedResource Remove="Network\Login\**" />
+	  <EmbeddedResource Remove="States\Eudemons\**" />
+	  <EmbeddedResource Remove="Threading\**" />
+	  <None Remove="Modules\Systems\AntiCheat\**" />
+	  <None Remove="Modules\Systems\DetainEquip\**" />
+	  <None Remove="Modules\Systems\ElitePKArenic\**" />
+	  <None Remove="Modules\Systems\Lottery\**" />
+	  <None Remove="Modules\Systems\PopPkArenic\**" />
+	  <None Remove="Modules\Systems\Storage\**" />
+	  <None Remove="Modules\Systems\TeamArenic\**" />
+	  <None Remove="Modules\Systems\Title\**" />
+	  <None Remove="Modules\Systems\Training\**" />
+	  <None Remove="Network\Login\**" />
+	  <None Remove="States\Eudemons\**" />
+	  <None Remove="Threading\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Long.Database\Long.Database.csproj" />
+	  <ProjectReference Include="..\Long.Network\Long.Network.csproj" />
+	  <ProjectReference Include="..\Long.World\Long.World.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.4" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+		<PackageReference Include="NLua" Version="1.6.3" />
+		<PackageReference Include="System.Runtime.Caching" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="StrRes.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>StrRes.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="StrRes.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>StrRes.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="ini\action_Res.ini">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="ini\GameMap.dat">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="ini\ItemQuench.ini">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="ini\terrainnpc.ini">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>

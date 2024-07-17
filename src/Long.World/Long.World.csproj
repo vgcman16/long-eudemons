@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Version>1.0.1</Version>
+		<Configurations>Debug;Release;Debug(Paladin)</Configurations>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug(Paladin)|AnyCPU'">
+		<DefineConstants>$(DefineConstants);DEBUG_PALADIN;DEBUG</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Serilog" Version="3.0.1" />
+		<PackageReference Include="SharpCompress" Version="0.34.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Ini" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Long.Shared\Long.Shared.csproj" />
+	</ItemGroup>
+
+</Project>
