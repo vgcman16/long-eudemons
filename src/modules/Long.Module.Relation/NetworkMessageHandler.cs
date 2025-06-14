@@ -7,7 +7,7 @@ namespace Long.Module.Relation
 {
     public sealed class NetworkMessageHandler : INetworkMessageHandler
     {
-        public async Task<bool> OnReceiveAsync(GameClientBase actor, PacketType type, byte[] message)
+        public Task<bool> OnReceiveAsync(GameClientBase actor, PacketType type, byte[] message)
         {
             MsgBase<GameClientBase> msg;
             if (type == PacketType.MsgFriend)
@@ -20,17 +20,17 @@ namespace Long.Module.Relation
             }
             else
             {
-                return false;
+                return Task.FromResult(false);
             }
 
             if (actor?.Character?.Map == null)
             {
-                return true;
+                return Task.FromResult(true);
             }
 
             msg.Decode(message);
             actor.Character.QueueAction(() => msg.ProcessAsync(actor));
-            return true;
+            return Task.FromResult(true);
         }
     }
 }

@@ -76,7 +76,7 @@ namespace Long.Kernel.Network.Game.Packets
                 // Create a new character
                 client.Creation = new AwaitingCreation { AccountId = auth.AccountID, Token = (uint)AccountId };
                 RoleManager.Registration.Add(client.Creation.Token);
-                client.SendAsync(MsgTalk.LoginNewRole).GetAwaiter().GetResult();
+                await client.SendAsync(MsgTalk.LoginNewRole);
                 return;
             }
 

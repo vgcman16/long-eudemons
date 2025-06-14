@@ -61,7 +61,7 @@ namespace Long.Game
                 Services.Randomness.StartAsync(CancellationToken.None),
                 NDDiffieHellman.ProbablePrimes.StartAsync(CancellationToken.None)
             };
-            Task.WaitAll(tasks.ToArray());
+            await Task.WhenAll(tasks);
 
             if (!await Kernel.InitializeAsync(serverSettings))
             {
@@ -100,12 +100,12 @@ namespace Long.Game
             while (!"exit".Equals(command));
         }
 
-        private static async Task ProcessCommandAsync(string command)
+        private static Task ProcessCommandAsync(string command)
         {
             string[] splitCmd = command.Split(new[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries);
             if (splitCmd.Length == 0)
             {
-                return;
+                return Task.CompletedTask;
             }
 
             switch (splitCmd[0])
@@ -139,6 +139,7 @@ namespace Long.Game
                         break;
                     }
             }
+            return Task.CompletedTask;
         }
     }
 }

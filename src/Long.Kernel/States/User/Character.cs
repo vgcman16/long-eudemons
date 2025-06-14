@@ -2154,12 +2154,12 @@ namespace Long.Kernel.States.User
             }
         }
 
-        public async Task DoDailyResetAsync(bool login)
+        public Task DoDailyResetAsync(bool login)
         {
             if (login && (!PreviousLoginTime.HasValue || PreviousLoginTime.Value.Date >= DateTime.Now.Date || LastLogout?.Date >= DateTime.Now.Date))
             {
                 // already reseted
-                return;
+                return Task.CompletedTask;
             }
 
             //if (!login)
@@ -2171,15 +2171,16 @@ namespace Long.Kernel.States.User
             //        await TaskDetail.DailyResetAsync();
             //    }
             //}
+            return Task.CompletedTask;
         }
 
         #endregion
 
         #region Timer
 
-        public async Task OnBattleTimerAsync()
+        public Task OnBattleTimerAsync()
         {
-            
+            return Task.CompletedTask;
         }
 
         public override async Task OnTimerAsync()

@@ -17,7 +17,7 @@ namespace Long.Game.Network.Login.Packets
             if (user != null)
             {
                 logger.Warning("User {0} is already logged in.", Data.AccountId);
-                RoleManager.KickOutAsync(user.Identity, "Duplicated login").GetAwaiter().GetResult();
+                await RoleManager.KickOutAsync(user.Identity, "Duplicated login");
                 //await client.SendAsync(new MsgLoginUserExchangeEx
                 //{
                 //    Data = new MsgLoginUserExchangeEx.LoginExchangeData

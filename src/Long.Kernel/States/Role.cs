@@ -806,30 +806,20 @@ namespace Long.Kernel.States
 
         public static bool IsWellStatus(int stts)
         {
-            switch (stts)
-            {
-            }
-
+            // TODO: implement status checks if needed
             return false;
         }
 
         public static bool IsBadlyStatus(int stts)
         {
-            switch (stts)
-            {
-            }
-
+            // TODO: implement status checks if needed
             return false;
         }
 
         public virtual bool HasDebilitatingStatus()
         {
-            foreach (var status in StatusSet.Status.Values)
-            {
-                switch (status.Identity)
-                {
-                }
-            }
+            // TODO: implement check for debilitating statuses when
+            // the status system is fully defined
             return false;
         }
 

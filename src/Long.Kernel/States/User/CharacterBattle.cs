@@ -494,12 +494,12 @@ namespace Long.Kernel.States.User
             return nDef + nAddDef;
         }
 
-        public override async Task<bool> TransferShieldAsync(bool bMagic, Role pAtker, int nDamage)
+        public override Task<bool> TransferShieldAsync(bool bMagic, Role pAtker, int nDamage)
         {
             IStatus status = QueryStatus(StatusSet.STATUS_TRANSFER_SHIELD);
             if (status != null)
             {
-                return false;
+                return Task.FromResult(false);
             }
 
             //int nMagicType = pStatus->GetPower();
@@ -534,12 +534,13 @@ namespace Long.Kernel.States.User
             //    }
             //}
 
-            return false;
+            return Task.FromResult(false);
         }
 
-        public override async Task BeKillAsync(Role attacker)
+        public override Task BeKillAsync(Role attacker)
         {
             // TODO: player die system
+            return Task.CompletedTask;
         }
 
         #endregion
@@ -1143,7 +1144,6 @@ namespace Long.Kernel.States.User
 
         private readonly TimeOut reviveTimer = new();
         private readonly TimeOut protectionTimer = new();
-        private bool reviveLeaveMap;
 
         public bool CanRevive()
         {
@@ -1184,11 +1184,8 @@ namespace Long.Kernel.States.User
             await SetAttributesAsync(ClientUpdateType.Mana, MaxMana);
             await SetXpAsync(0);
 
-            reviveLeaveMap = true;
-            
             if (chgMap || !isSpell)
             {
-                reviveLeaveMap = false;
                 await FlyMapAsync(user.MapId, user.X, user.Y);
             }
             else
