@@ -21,14 +21,15 @@ namespace Long.Network
                 return ipAddress.Equals(CIDRmask);
             }
 
+            int prefixLength = int.Parse(parts[1]);
             int ipAddr = BitConverter.ToInt32(IPAddress.Parse(ipAddress).GetAddressBytes(), 0);
             int cidrAddr = BitConverter.ToInt32(IPAddress.Parse(parts[0]).GetAddressBytes(), 0);
-            int cidrMask = IPAddress.HostToNetworkOrder(-1 << (32 - int.Parse(parts[1])));
-            if (cidrMask == 32)
+            int cidrMask = IPAddress.HostToNetworkOrder(-1 << (32 - prefixLength));
+            if (prefixLength == 32)
             {
                 return true;
             }
-            return ((ipAddr & cidrMask) == (cidrAddr & cidrMask));
+            return (ipAddr & cidrMask) == (cidrAddr & cidrMask);
         }
     }
 }

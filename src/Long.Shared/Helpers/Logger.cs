@@ -25,6 +25,8 @@ namespace Long.Shared.Helpers
                 .WriteTo.File($"Logs/{fileName}.log", outputTemplate: "{Timestamp:HH:mm:ss.fff} [{Level}] ({ThreadId}) {Message}{NewLine}{Exception}{NewLine}", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
 
+            initialized = true;
+
         }
 
         public static ILogger CreateLogger(string fileName)

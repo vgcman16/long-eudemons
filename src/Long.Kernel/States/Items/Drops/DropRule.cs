@@ -1,4 +1,5 @@
-﻿using Long.Database.Entities;
+using Long.Database.Entities;
+using Long.Kernel.Service;
 
 namespace Long.Kernel.States.Items.Drops
 {
@@ -64,7 +65,7 @@ namespace Long.Kernel.States.Items.Drops
             {
                 if (rand < totalChance + RuleChance)
                 {
-                    typeId = items[NextAsync(items.Count).GetAwaiter().GetResult()];
+                    typeId = items[Services.Randomness.NextInteger(0, items.Count)];
                 }
             }
 
