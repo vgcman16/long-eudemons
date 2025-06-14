@@ -20,7 +20,7 @@ namespace Long.Kernel.States.Npcs
         public virtual async Task<bool> InitializeAsync()
         {
             ShopGoods = await GoodsRepository.GetAsync(Identity);
-            ShopGoods.AddRange(GoodsRepository.GetExAsync(Identity).GetAwaiter().GetResult().Select(x => new DbGoods()
+            ShopGoods.AddRange((await GoodsRepository.GetExAsync(Identity)).Select(x => new DbGoods()
             {
                 Identity = 1000000 + x.Identity,
                 Itemtype = x.Itemtype,

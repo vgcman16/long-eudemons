@@ -31,12 +31,12 @@ namespace Long.Game.Network.Game
             Instance = this;
         }
 
-        protected override async Task<GameClient> AcceptedAsync(Socket socket, Memory<byte> buffer)
+        protected override Task<GameClient> AcceptedAsync(Socket socket, Memory<byte> buffer)
         {
             uint readPartition = packetProcessor.SelectReadPartition();
             uint writePartition = packetProcessor.SelectWritePartition();
             var client = new GameClient(socket, buffer, readPartition, writePartition);
-            return client;
+            return Task.FromResult(client);
         }
 
         protected override void Received(GameClient actor, ReadOnlySpan<byte> packet)

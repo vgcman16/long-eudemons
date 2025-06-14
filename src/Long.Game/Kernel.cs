@@ -67,7 +67,7 @@ namespace Long.Game
 
         public static async Task CloseAsync()
         {
-            cancellationTokenSource.Cancel();
+            await cancellationTokenSource.CancelAsync();
             for (int i = 5; i >= 0; i--)
             {
                 logger.Information("Closing in {0} seconds...", i);
