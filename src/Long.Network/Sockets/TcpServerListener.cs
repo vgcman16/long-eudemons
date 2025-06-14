@@ -114,7 +114,6 @@ namespace Long.Network.Sockets
 
             // Start the background registry cleaner and accepting clients
             await registry.StartAsync(shutdownToken.Token);
-            _ = packetProcessor.StartAsync(shutdownToken.Token);
             await AcceptingAsync();
         }
 
@@ -429,7 +428,15 @@ namespace Long.Network.Sockets
                     break;
                 }
 
-                // TODO add footer validation?
+                if (footerLength > 0)
+                {
+                    var footerSpan = buffer.Slice(consumed + length, footerLength);
+                    if (!footerSpan.SequenceEqual(actor.PacketFooter))
+                    {
+                        return false;
+                    }
+                }
+
                 Received(actor, buffer.Slice(consumed, length)); // skip the footer
                 consumed += length + footerLength;
             }

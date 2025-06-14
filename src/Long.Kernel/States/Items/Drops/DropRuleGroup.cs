@@ -1,4 +1,5 @@
-﻿using Long.Kernel.Database.Repositories;
+using Long.Kernel.Database.Repositories;
+using Long.Kernel.Service;
 
 namespace Long.Kernel.States.Items.Drops
 {
@@ -61,7 +62,7 @@ namespace Long.Kernel.States.Items.Drops
         public uint GetDropItem()
         {
             uint typeId = 0;
-            int rand = NextAsync(DROP_CHANCE_PRECISION).GetAwaiter().GetResult();
+            int rand = Services.Randomness.NextInteger(0, DROP_CHANCE_PRECISION);
             int totalChance = 0;
             foreach (var rule in rules)
             {

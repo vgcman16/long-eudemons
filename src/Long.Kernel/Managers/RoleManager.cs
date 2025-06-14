@@ -104,17 +104,17 @@ namespace Long.Kernel.Managers
                 return false;
             }
 
-            //if (isMaintenanceEntrance)
-            //{
-            //    await user.DisconnectWithMessageAsync(MsgConnectEx.RejectionCode.ServerLocked);
-            //    return false;
-            //}
+            if (isMaintenanceEntrance)
+            {
+                await user.DisconnectWithMessageAsync(MsgConnectEx.RejectionCode.ServerLocked);
+                return false;
+            }
 
-            //if (isCooperatorMode)
-            //{
-            //    await user.DisconnectWithMessageAsync(MsgConnectEx.RejectionCode.NonCooperatorAccount);
-            //    return false;
-            //}
+            if (isCooperatorMode)
+            {
+                await user.DisconnectWithMessageAsync(MsgConnectEx.RejectionCode.NonCooperatorAccount);
+                return false;
+            }
 
             if (userSet.TryGetValue(user.Character.Identity, out Character concurrent))
             {
